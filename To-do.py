@@ -17,46 +17,46 @@ while True:
 	
 	match int(input()):
 		case 1: # Create a new task.
-			with open('tasks.txt', 'a') as lista:
-				nombre_tarea = input('Write task name: ')
-				lista.writelines(nombre_tarea)
-				lista.writelines('\t' + input('Write date in DD/MM/YYYY format: ') + '\n')
+			with open('tasks.txt', 'a') as list:
+				task_name = input('Write task name: ')
+				list.writelines(task_name)
+				list.writelines('\t' + input('Write date in DD/MM/YYYY format: ') + '\n')
 			
-			print(f'Task "{nombre_tarea}" has been created.')
+			print(f'Task "{task_name}" has been created.')
 		
-		case 2: # Ver la lista de tareas.
-			with open('tasks.txt', 'r') as lista:
+		case 2: # View task list.
+			with open('tasks.txt', 'r') as list:
 				print('No.|TASK\t|DUE DATE')
 
-				iteracion = 0
-				for tarea in lista.readlines():
-					iteracion += 1
-					print(f'{iteracion}. {tarea}')
+				iter = 0
+				for task in list.readlines():
+					iter += 1
+					print(f'{iter}. {task}')
 			
-			match int(input('\n--------------------\n¿Qué deseas hacer ahora?:\
-				   1 -> Modificar una tarea.\
-				   2 -> Eliminar una tarea.\
-				   3 -> Ver la descripción de una tarea.\
-				   0 -> Volver al menú principal.\n--------------------')):
-				case 1: # Modificar una tarea.
+			match int(input('\n--------------------\nWhat do you want to do now?:\
+				   1 -> Modify a task.\
+				   2 -> Delete a task.\
+				   3 -> View task description.\
+				   0 -> Go to main menu.\n--------------------')):
+				case 1: # Modify a task.
 					pass
 
-				case 2: # Eliminar una tarea.
+				case 2: # Delete a task.
 					pass
 
-				case 3: # Ver la descripción de una tarea.
+				case 3: # View task description.
 					pass
 
-				case 0: # Volver al menú principal.
+				case 0: # Go to main menu.
 					continue
 
 				case _:
-					pass # Añadir método para mostrar error y repetir match.
+					pass # Add method to report error and come back to match.
 					
 		
-		case 0: # Cerrar el programa.
-			print('Fin del programa.')
+		case 0: # Close program.
+			print(input('End of program. Clic Enter to exit.'))
 			break
 
 		case _:
-			pass # Añadir método para mostrar error y repetir match.
+			pass # Add method to report error and come back to match.
