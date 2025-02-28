@@ -1,4 +1,5 @@
 import gettext
+import sqlite3
 
 def select_language(language):
 	localedir = 'locales'
@@ -10,6 +11,15 @@ def select_language(language):
 language = input('Choose language/elige idioma (en/es): ').strip()
 select_language(language)
 
+con = sqlite3.connect('tasks.db')
+cur = con.cursor()
+
+try:
+	cur.execute(f'CREATE TABLE tasks({tr('TASK, DUE DATE, DESCRIPTION')})')
+except:
+	pass # Check if this works properly - should create table if doesn't exist, else pass.
+
+
 while True:
 	print(tr('\n--------------------\n\t\tTO-DO\n\nPlease, choose the action you want to do:\n'
 	   '1 -> Create a new task.\n'
@@ -18,21 +28,10 @@ while True:
 	
 	match int(input()):
 		case 1: # Create a new task.
-			with open('tasks.txt', 'a') as list:
-				task_name = input(tr('Write task name: '))
-				list.writelines(task_name)
-				list.writelines('\t' + input(tr('Write date in DD/MM/YYYY format: ')) + '\n')
-			
-			print(tr(f'Task "{task_name}" has been created.'))
+			pass
 		
 		case 2: # View task list.
-			with open('tasks.txt', 'r') as list:
-				print(tr('No.|TASK\t|DUE DATE'))
-
-				iter = 0
-				for task in list.readlines():
-					iter += 1
-					print(f'{iter}. {task}')
+			pass
 			
 			match int(input(tr('\n--------------------\nWhat do you want to do now?:\
 				   1 -> Modify a task.\
