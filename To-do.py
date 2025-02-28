@@ -6,7 +6,7 @@ def select_language(language):
 	global tr
 	tr = gettext.gettext
 
-laguage = input('Choose language/elige idioma (en/es): ').strip()
+language = input('Choose language/elige idioma (en/es): ').strip()
 select_language(language)
 
 while True:
