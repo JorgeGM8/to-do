@@ -14,3 +14,5 @@ Simple to-do list program. *UNDER CONSTRUCTION*
 ⚡ View task description.
 
 ⚡ Error handling.
+
+⚡ Translation to Spanish.
