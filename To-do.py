@@ -1,21 +1,32 @@
+import gettext
+
+def select_language(language):
+	localedir = 'locales'
+	gettext.translation('messages', localedir, languages=[language], fallback=True).install()
+	global tr
+	tr = gettext.gettext
+
+laguage = input('Choose language/elige idioma (en/es): ').strip()
+select_language(language)
+
 while True:
-	print('\n--------------------\n\t\tTO-DO\n\nPor favor, indica la acción que quieres realizar:\n'
-	   '1 -> Crear una tarea.\n'
-	   '2 -> Ver lista de tareas.\n'
-	   '0 -> Salir del programa.\n--------------------')
+	print('\n--------------------\n\t\tTO-DO\n\nPlease, choose the action you want to do:\n'
+	   '1 -> Create a new task.\n'
+	   '2 -> View task list.\n'
+	   '0 -> Exit program.\n--------------------')
 	
 	match int(input()):
-		case 1: # Crear una tarea.
-			with open('tareas.txt', 'a') as lista:
-				nombre_tarea = input('Escribe el nombre de la tarea: ')
+		case 1: # Create a new task.
+			with open('tasks.txt', 'a') as lista:
+				nombre_tarea = input('Write task name: ')
 				lista.writelines(nombre_tarea)
-				lista.writelines('\t' + input('Escribe la fecha en formato DD/MM/AAAA: ') + '\n')
+				lista.writelines('\t' + input('Write date in DD/MM/YYYY format: ') + '\n')
 			
-			print(f'La tarea "{nombre_tarea}" ha sido creada.')
+			print(f'Task "{nombre_tarea}" has been created.')
 		
 		case 2: # Ver la lista de tareas.
-			with open('tareas.txt', 'r') as lista:
-				print('Nº|TAREA\t|FECHA LÍMITE')
+			with open('tasks.txt', 'r') as lista:
+				print('No.|TASK\t|DUE DATE')
 
 				iteracion = 0
 				for tarea in lista.readlines():
