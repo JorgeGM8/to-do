@@ -1,16 +1,16 @@
-# Descripción
-Programa sencillo de lista de tareas. *EN CONSTRUCCIÓN*
+# Description
+Simple to-do list program. *UNDER CONSTRUCTION*
 
-# Completado
-✅ Crear tarea, fecha y descripción.
+# Completed
+✅ Create task, date and description.
 
-✅ Mostrar lista de tareas (tarea y fecha).
+✅ Display task list (task and date).
 
-# Pendiente
-⚡ Modificar tarea.
+# Pending
+⚡ Modify task.
 
-⚡ Eliminar tarea.
+⚡ Delete task.
 
-⚡ Ver descripción de tarea.
+⚡ View task description.
 
-⚡ Gestión de errores.
+⚡ Error handling.
