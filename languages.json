@@ -1,9 +1,31 @@
 {
     "en": {
-
+        "chosen_lang": "You have selected English. To change to another language, restart the program.",
+        "TASK_col": "TASK",
+        "DUE_DATE_col": "DUE DATE",
+        "DESCRIPTION_col": "DESCRIPTION",
+        "main_actions": "\n--------------------\n\t\tTO-DO\n\nPlease, choose the action you want to do:\n1 -> Create a new task.\n2 -> View task list.\n0 -> Exit program.\n--------------------\n",
+        "new_task": "Name of new task: ",
+        "new_date": "Due date in DD/MM/YYYY format (optional): ",
+        "new_description": "Description (optional): ",
+        "task_created": "Task successfully created.",
+        "number_col": "No.",
+        "end_program": "End of program. Press Enter to exit.",
+        "next_actions": "\n--------------------\nWhat do you want to do now?:\n1 -> Modify a task.\n2 -> Delete a task.\n3 -> View task description.\n0 -> Go to main menu.\n--------------------\n"
     },
 
     "es": {
-        
+        "chosen_lang": "Has seleccionado español. Para cambiar a otro idioma, reinicia el programa.",
+        "TASK_col": "TAREA",
+        "DUE_DATE_col": "FECHA LÍMITE",
+        "DESCRIPTION_col": "DESCRIPCIÓN",
+        "main_actions": "\n--------------------\n\t\tTO-DO\n\nPor favor, elige la acción para realizar:\n1 -> Crear una nueva tarea.\n2 -> Ver lista de tareas.\n0 -> Salir del programa.\n--------------------\n",
+        "new_task": "Nombre de la nueva tarea: ",
+        "new_date": "Fecha límite en formato DD/MM/YYYY (opcional): ",
+        "new_description": "Descripción (opcional): ",
+        "task_created": "Tarea creada con éxito.",
+        "number_col": "Nº",
+        "end_program": "Fin del programa. Presiona Enter para salir.",
+        "next_actions": "\n--------------------\n¿Qué quieres hacer ahora?\n1 -> Modificar una tarea.\n2 -> Eliminar una tarea.\n3 -> Ver la descripción de una tarea.\n0 -> Ir al menú principal.\n--------------------\n"
     }
 }
