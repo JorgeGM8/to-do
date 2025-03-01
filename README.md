@@ -15,11 +15,11 @@ For example, with pip:
 
 ✅ Display task list (number, task, date and description).
 
+✅ Translation to Spanish.
+
 # Pending
 ⚡ Modify task.
 
 ⚡ Delete task.
 
 ⚡ Error handling.
-
-⚡ Translation to Spanish.
