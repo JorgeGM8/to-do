@@ -17,9 +17,12 @@ For example, with pip:
 
 ✅ Translation to Spanish.
 
-# Pending
-⚡ Modify task.
+✅ Modify tasks.
 
-⚡ Delete task.
+# Pending
+
+⚡ Delete tasks.
+
+⚡ Order by name or date.
 
 ⚡ Error handling.
