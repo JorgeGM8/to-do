@@ -3,6 +3,25 @@ from json import load
 from tabulate import tabulate
 
 
+def task_list(): # This shows task list.
+	rows = cur.execute('SELECT * FROM tasks').fetchall()
+	headers = [desc[0] for desc in cur.description]
+
+	print(tabulate(rows, headers=headers, tablefmt='grid'))
+
+def task_mod(lang_dict_column): # This modifies the value of the selected column of a task.
+	if lang_dict_column == lang_dict["TASK_col"]:
+		mod_name = input(lang_dict["mod_name"])
+	elif lang_dict_column == lang_dict["DUE_DATE_col"]:
+		mod_name = input(lang_dict["mod_date"])
+	else:
+		mod_name = input(lang_dict["mod_description"])
+	
+	cur.execute(f'UPDATE tasks SET "{lang_dict_column}" = ? WHERE "{lang_dict["number_col"]}" = ?', (mod_name, task_id))
+	con.commit()
+	print(lang_dict['task_modified'])
+
+
 # Language management.
 while True:
 	language = input('Choose language/elige idioma (en/es): ').strip()
@@ -16,7 +35,7 @@ while True:
 		else:
 			print('Please, choose correct language:\nen - English\nes - Español')
 
-print(f'{lang_dict['chosen_lang']}')
+print(lang_dict['chosen_lang'])
 
 
 # Database and table creation/modification.
@@ -24,13 +43,13 @@ con = sqlite3.connect('tasks.db')
 cur = con.cursor()
 
 try:
-	cur.execute(f'CREATE TABLE tasks({lang_dict['TASK_col']} VARCHAR(100) NOT NULL, "{lang_dict['DUE_DATE_col']}" DATE, {lang_dict['DESCRIPTION_col']} VARCHAR(300))')
+	cur.execute(f'CREATE TABLE tasks("{lang_dict["number_col"]}" INT, {lang_dict["TASK_col"]} VARCHAR(100) NOT NULL, "{lang_dict["DUE_DATE_col"]}" DATE, {lang_dict["DESCRIPTION_col"]} VARCHAR(300))')
 	con.commit()
 except:
 	try:
 		cur.execute('PRAGMA table_info(tasks)')
 		columns = cur.fetchall()
-		names = [lang_dict['TASK_col'], lang_dict['DUE_DATE_col'], lang_dict['DESCRIPTION_col']]
+		names = [lang_dict['number_col'], lang_dict['TASK_col'], lang_dict['DUE_DATE_col'], lang_dict['DESCRIPTION_col']]
 
 		for i in range(len(columns)):
 			old_name = columns[i][1]
@@ -48,24 +67,21 @@ except:
 while True:
 	match int(input(lang_dict['main_actions'])):
 		case 1: # Create a new task.
+			id = cur.execute('SELECT COUNT(*) FROM tasks').fetchone()[0] + 1
 			name = input(lang_dict['new_task'])
 			date = input(lang_dict['new_date'])
 			description = input(lang_dict['new_description'])
-			data = [name, date, description]
+			data = [id, name, date, description]
 
 			cur.execute('''INSERT INTO tasks
-			   VALUES (?, ?, ?)
+			   VALUES (?, ?, ?, ?)
 			''', data)
 			con.commit()
 
 			print(lang_dict['task_created'])
 
 		case 2: # View task list.
-			rows = cur.execute('SELECT * FROM tasks').fetchall()
-			headers = [lang_dict['number_col']] + [desc[0] for desc in cur.description]
-			rows = [(i+1, *row) for i, row in enumerate(rows)]
-
-			print(tabulate(rows, headers=headers, tablefmt='grid'))
+			task_list()
 					
 		case 0: # Close program.
 			con.close()
@@ -73,11 +89,38 @@ while True:
 			break
 
 		case _:
-			pass # Add method to report error and repeat match.
+			continue # Back to main menu.
 
 	match int(input(lang_dict['next_actions'])):
 		case 1: # Modify a task.
-			pass
+			task_list()
+			task_id = input(lang_dict['modify_task'])
+			
+			if task_id == '':
+				continue
+			else:
+				try:
+					task_id = int(task_id)
+				except:
+					continue
+
+			exists = cur.execute(f'SELECT EXISTS(SELECT * FROM tasks WHERE "{lang_dict["number_col"]}" = ?)', (task_id,)).fetchone()[0]
+			if exists == 0: # Does not exist.
+				print(lang_dict['exists_false'])
+				continue
+			else: # Does exist.
+				match int(input(lang_dict['modify'])):
+					case 1: # Modify name.
+						task_mod(lang_dict["TASK_col"])
+
+					case 2: # Modify due date.
+						task_mod(lang_dict["DUE_DATE_col"])
+
+					case 3: # Modify description.
+						task_mod(lang_dict["DESCRIPTION_col"])
+
+					case _: # Cancel.
+						continue
 
 		case 2: # Delete a task.
 			pass

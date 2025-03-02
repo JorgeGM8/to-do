@@ -11,7 +11,15 @@
         "task_created": "Task successfully created.",
         "number_col": "No.",
         "end_program": "End of program. Press Enter to exit.",
-        "next_actions": "\n--------------------\nWhat do you want to do now?:\n1 -> Modify a task.\n2 -> Delete a task.\n3 -> View task description.\n0 -> Go to main menu.\n--------------------\n"
+        "next_actions": "\n--------------------\nWhat do you want to do now?:\n1 -> Modify a task.\n2 -> Delete a task.\n3 -> View task description.\n0 -> Go to main menu.\n--------------------\n",
+        "modify_task": "Choose task number to modify, or press Enter to cancel: ",
+        "wrong_id": "\nWrong id. Coming back to menu.\n",
+        "modify": "\nWhat do you want to modify?\n1 -> Task name.\n2 -> Due date.\n3 -> Description.\n0-> Cancel.\n",
+        "exists_false": "\nThis task doesn't exist.\n",
+        "mod_name": "\nWrite new name: ",
+        "mod_date": "\nWrite new date (DD/MM/YYYY): ",
+        "mod_description": "\nWrite new description: ",
+        "task_modified": "\nTask modified successfully.\n"
     },
 
     "es": {
@@ -26,6 +34,14 @@
         "task_created": "Tarea creada con éxito.",
         "number_col": "Nº",
         "end_program": "Fin del programa. Presiona Enter para salir.",
-        "next_actions": "\n--------------------\n¿Qué quieres hacer ahora?\n1 -> Modificar una tarea.\n2 -> Eliminar una tarea.\n3 -> Ver la descripción de una tarea.\n0 -> Ir al menú principal.\n--------------------\n"
+        "next_actions": "\n--------------------\n¿Qué quieres hacer ahora?\n1 -> Modificar una tarea.\n2 -> Eliminar una tarea.\n3 -> Ver la descripción de una tarea.\n0 -> Ir al menú principal.\n--------------------\n",
+        "modify_task": "Elige la tarea que quieres modificar, o presiona Enter para cancelar: ",
+        "wrong_id": "\nId incorrecto. Volviendo al menú.\n",
+        "modify": "\n¿Qué quieres modificar?\n1 -> Nombre de la tarea.\n2 -> Fecha límite.\n3 -> Descripción.\n0-> Cancelar.\n",
+        "exists_false": "\nEsta tarea no existe.\n",
+        "mod_name": "\nEscribe el nuevo nombre: ",
+        "mod_date": "\nEscribe nueva fecha (DD/MM/AAAA): ",
+        "mod_description": "\nEscribe nueva descripción: ",
+        "task_modified": "\nTarea modificada con éxito.\n"
     }
 }
