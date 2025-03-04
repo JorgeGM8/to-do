@@ -2,7 +2,7 @@
 Simple to-do list program. *UNDER CONSTRUCTION*
 
 # Instructions
-You will need to have Python installed and just one lightweight library, called "tabulate".
+You will need to have Python >=3.10 installed and just one lightweight library, called "tabulate".
 
 You may install the dependency directly or using the requirements.txt file.
 
