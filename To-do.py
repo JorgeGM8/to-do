@@ -11,11 +11,11 @@ def task_list(): # This shows task list.
 
 def task_mod(lang_dict_column): # This modifies the value of the selected column of a task.
 	if lang_dict_column == lang_dict["TASK_col"]:
-		mod_name = input(lang_dict["mod_name"])
+		mod_name = input(lang_dict["mod_name"]).strip()
 	elif lang_dict_column == lang_dict["DUE_DATE_col"]:
-		mod_name = input(lang_dict["mod_date"])
+		mod_name = input(lang_dict["mod_date"]).strip()
 	else:
-		mod_name = input(lang_dict["mod_description"])
+		mod_name = input(lang_dict["mod_description"]).strip()
 	
 	cur.execute(f'UPDATE tasks SET "{lang_dict_column}" = ? WHERE "{lang_dict["number_col"]}" = ?', (mod_name, task_id))
 	con.commit()
@@ -65,12 +65,12 @@ except:
 
 # Program itself.
 while True:
-	match int(input(lang_dict['main_actions'])):
+	match int(input(lang_dict['main_actions']).strip()):
 		case 1: # Create a new task.
 			id = cur.execute('SELECT COUNT(*) FROM tasks').fetchone()[0] + 1
-			name = input(lang_dict['new_task'])
-			date = input(lang_dict['new_date'])
-			description = input(lang_dict['new_description'])
+			name = input(lang_dict['new_task']).strip()
+			date = input(lang_dict['new_date']).strip()
+			description = input(lang_dict['new_description']).strip()
 			data = [id, name, date, description]
 
 			cur.execute('''INSERT INTO tasks
@@ -94,7 +94,7 @@ while True:
 	match int(input(lang_dict['next_actions'])):
 		case 1: # Modify a task.
 			task_list()
-			task_id = input(lang_dict['modify_task'])
+			task_id = input(lang_dict['modify_task']).strip()
 			
 			if task_id == '':
 				continue
@@ -109,7 +109,7 @@ while True:
 				print(lang_dict['exists_false'])
 				continue
 			else: # Does exist.
-				match int(input(lang_dict['modify'])):
+				match int(input(lang_dict['modify']).strip()):
 					case 1: # Modify name.
 						task_mod(lang_dict["TASK_col"])
 
@@ -123,8 +123,33 @@ while True:
 						continue
 
 		case 2: # Delete a task.
-			pass
+			task_list()
+			task_id = input(lang_dict['delete_task']).strip()
 
+			if task_id == '':
+				continue
+			else:
+				try:
+					task_id = int(task_id)
+				except:
+					continue
+
+			exists = cur.execute(f'SELECT EXISTS(SELECT * FROM tasks WHERE "{lang_dict["number_col"]}" = ?)', (task_id,)).fetchone()[0]
+			if exists == 0: # Does not exist.
+				print(lang_dict['exists_false'])
+				continue
+			else: # Does exist.
+				con.commit()
+				cur.execute('BEGIN')
+				cur.execute(f'DELETE FROM tasks WHERE "{lang_dict["number_col"]}" = ?', (task_id,))
+				confirm = input(f'{lang_dict["confirm_deletion"]}').lower().strip()
+
+				if confirm == 'y':
+					con.commit()
+					print(lang_dict['task_deleted'])
+				else:
+					con.rollback()
+		
 		case 3: # View task description.
 			pass
 

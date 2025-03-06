@@ -19,10 +19,12 @@ For example, with pip:
 
 ✅ Modify tasks.
 
-# Pending
+✅ Delete tasks.
 
-⚡ Delete tasks.
+# Pending
 
 ⚡ Order by name or date.
 
 ⚡ Error handling.
+
+⚡ Export/import tasks.

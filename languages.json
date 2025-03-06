@@ -19,7 +19,10 @@
         "mod_name": "\nWrite new name: ",
         "mod_date": "\nWrite new date (DD/MM/YYYY): ",
         "mod_description": "\nWrite new description: ",
-        "task_modified": "\nTask modified successfully.\n"
+        "task_modified": "\nTask modified successfully.\n",
+        "delete_task": "Choose task number to delete, or press Enter to cancel: ",
+        "confirm_deletion": "Task {task_id} will be deleteted. Confirm (y/n): ",
+        "task_deleted": "Task deleted successfully."
     },
 
     "es": {
@@ -42,6 +45,9 @@
         "mod_name": "\nEscribe el nuevo nombre: ",
         "mod_date": "\nEscribe nueva fecha (DD/MM/AAAA): ",
         "mod_description": "\nEscribe nueva descripción: ",
-        "task_modified": "\nTarea modificada con éxito.\n"
+        "task_modified": "\nTarea modificada con éxito.\n",
+        "delete_task": "Elige la tarea que quieres eliminar, o presiona Enter para cancelar: ",
+        "confirm_deletion": "La tarea {task_id} será eliminada. Confirmar (s/n): ",
+        "task_deleted": "Tarea eliminada con éxito."
     }
 }
