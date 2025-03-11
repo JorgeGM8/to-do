@@ -11,10 +11,7 @@ def task_list(): # This shows task list.
 	except:
 		order = 1
 	
-	if order == 3:
-		rows = cur.execute(f'SELECT * FROM tasks ORDER BY {order}').fetchall()
-	else:
-		rows = cur.execute(f'SELECT * FROM tasks ORDER BY {order}').fetchall()
+	rows = cur.execute(f'SELECT * FROM tasks ORDER BY {order}').fetchall()
 	headers = [desc[0] for desc in cur.description]
 
 	print(tabulate(rows, headers=headers, tablefmt='grid'))
