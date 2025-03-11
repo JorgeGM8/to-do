@@ -17,12 +17,13 @@
         "modify": "\nWhat do you want to modify?\n1 -> Task name.\n2 -> Due date.\n3 -> Description.\n0-> Cancel.\n",
         "exists_false": "\nThis task doesn't exist.\n",
         "mod_name": "\nWrite new name: ",
-        "mod_date": "\nWrite new date (DD/MM/YYYY): ",
+        "mod_date": "\nWrite new date (YYYY-MM-DD): ",
         "mod_description": "\nWrite new description: ",
         "task_modified": "\nTask modified successfully.\n",
         "delete_task": "Choose task number to delete, or press Enter to cancel: ",
         "confirm_deletion": "Task {task_id} will be deleteted. Confirm (y/n): ",
-        "task_deleted": "Task deleted successfully."
+        "task_deleted": "Task deleted successfully.",
+        "choose_order": "Choose how to order (default by No.):\n1 -> No.\n2 -> Task name.\n3 -> Due date.\n"
     },
 
     "es": {
@@ -32,7 +33,7 @@
         "DESCRIPTION_col": "DESCRIPCIÓN",
         "main_actions": "\n--------------------\n\t\tTO-DO\n\nPor favor, elige la acción para realizar:\n1 -> Crear una nueva tarea.\n2 -> Ver lista de tareas.\n0 -> Salir del programa.\n--------------------\n",
         "new_task": "Nombre de la nueva tarea: ",
-        "new_date": "Fecha límite en formato DD/MM/YYYY (opcional): ",
+        "new_date": "Fecha límite en formato AAAA-MM-DD (opcional): ",
         "new_description": "Descripción (opcional): ",
         "task_created": "Tarea creada con éxito.",
         "number_col": "Nº",
@@ -48,6 +49,7 @@
         "task_modified": "\nTarea modificada con éxito.\n",
         "delete_task": "Elige la tarea que quieres eliminar, o presiona Enter para cancelar: ",
         "confirm_deletion": "La tarea {task_id} será eliminada. Confirmar (s/n): ",
-        "task_deleted": "Tarea eliminada con éxito."
+        "task_deleted": "Tarea eliminada con éxito.",
+        "choose_order": "Elige cómo ordenar (por defecto por Nº):\n1 -> Nº\n2 -> Nombre de tarea.\n3 -> Fecha límite.\n"
     }
 }

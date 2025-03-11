@@ -4,7 +4,17 @@ from tabulate import tabulate
 
 
 def task_list(): # This shows task list.
-	rows = cur.execute('SELECT * FROM tasks').fetchall()
+	try:
+		order = int(input(lang_dict['choose_order']))
+		if order not in (2, 3):
+			order = 1
+	except:
+		order = 1
+	
+	if order == 3:
+		rows = cur.execute(f'SELECT * FROM tasks ORDER BY {order}').fetchall()
+	else:
+		rows = cur.execute(f'SELECT * FROM tasks ORDER BY {order}').fetchall()
 	headers = [desc[0] for desc in cur.description]
 
 	print(tabulate(rows, headers=headers, tablefmt='grid'))
