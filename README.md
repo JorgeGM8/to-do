@@ -21,9 +21,9 @@ For example, with pip:
 
 ✅ Delete tasks.
 
-# Pending
+✅ Order by name or date.
 
-⚡ Order by name or date.
+# Pending
 
 ⚡ Error handling.
 
