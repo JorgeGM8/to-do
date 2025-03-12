@@ -4,14 +4,14 @@
         "TASK_col": "TASK",
         "DUE_DATE_col": "DUE DATE",
         "DESCRIPTION_col": "DESCRIPTION",
-        "main_actions": "\n--------------------\n\t\tTO-DO\n\nPlease, choose the action you want to do:\n1 -> Create a new task.\n2 -> View task list.\n0 -> Exit program.\n--------------------\n",
+        "main_actions": "\n--------------------\n\t\tTO-DO\n\nPlease, choose the action you want to do:\n1 -> Create a new task.\n2 -> View task list.\n3 -> View completed tasks.\n0 -> Exit program.\n--------------------\n",
         "new_task": "Name of new task: ",
         "new_date": "Due date in DD/MM/YYYY format (optional): ",
         "new_description": "Description (optional): ",
         "task_created": "Task successfully created.",
         "number_col": "No.",
         "end_program": "End of program. Press Enter to exit.",
-        "next_actions": "\n--------------------\nWhat do you want to do now?:\n1 -> Modify a task.\n2 -> Delete a task.\n3 -> View task description.\n0 -> Go to main menu.\n--------------------\n",
+        "next_actions": "\n--------------------\nWhat do you want to do now?:\n1 -> Modify a task.\n2 -> Delete a task.\n3 -> Mark task as completed.\n0 -> Go to main menu.\n--------------------\n",
         "modify_task": "Choose task number to modify, or press Enter to cancel: ",
         "wrong_id": "\nWrong id. Coming back to menu.\n",
         "modify": "\nWhat do you want to modify?\n1 -> Task name.\n2 -> Due date.\n3 -> Description.\n0-> Cancel.\n",
@@ -23,7 +23,8 @@
         "delete_task": "Choose task number to delete, or press Enter to cancel: ",
         "confirm_deletion": "Task {task_id} will be deleteted. Confirm (y/n): ",
         "task_deleted": "Task deleted successfully.",
-        "choose_order": "Choose how to order (default by No.):\n1 -> No.\n2 -> Task name.\n3 -> Due date.\n"
+        "choose_order": "Choose how to order (default by No.):\n1 -> No.\n2 -> Task name.\n3 -> Due date.\n",
+        "complete_task": "Choose task number to complete, or press Enter to cancel: "
     },
 
     "es": {
@@ -31,14 +32,14 @@
         "TASK_col": "TAREA",
         "DUE_DATE_col": "FECHA LÍMITE",
         "DESCRIPTION_col": "DESCRIPCIÓN",
-        "main_actions": "\n--------------------\n\t\tTO-DO\n\nPor favor, elige la acción para realizar:\n1 -> Crear una nueva tarea.\n2 -> Ver lista de tareas.\n0 -> Salir del programa.\n--------------------\n",
+        "main_actions": "\n--------------------\n\t\tTO-DO\n\nPor favor, elige la acción para realizar:\n1 -> Crear una nueva tarea.\n2 -> Ver lista de tareas.\n3 -> Ver tareas completadas.\n0 -> Salir del programa.\n--------------------\n",
         "new_task": "Nombre de la nueva tarea: ",
         "new_date": "Fecha límite en formato AAAA-MM-DD (opcional): ",
         "new_description": "Descripción (opcional): ",
         "task_created": "Tarea creada con éxito.",
         "number_col": "Nº",
         "end_program": "Fin del programa. Presiona Enter para salir.",
-        "next_actions": "\n--------------------\n¿Qué quieres hacer ahora?\n1 -> Modificar una tarea.\n2 -> Eliminar una tarea.\n3 -> Ver la descripción de una tarea.\n0 -> Ir al menú principal.\n--------------------\n",
+        "next_actions": "\n--------------------\n¿Qué quieres hacer ahora?\n1 -> Modificar una tarea.\n2 -> Eliminar una tarea.\n3 -> Marcar tarea como completada.\n0 -> Ir al menú principal.\n--------------------\n",
         "modify_task": "Elige la tarea que quieres modificar, o presiona Enter para cancelar: ",
         "wrong_id": "\nId incorrecto. Volviendo al menú.\n",
         "modify": "\n¿Qué quieres modificar?\n1 -> Nombre de la tarea.\n2 -> Fecha límite.\n3 -> Descripción.\n0-> Cancelar.\n",
@@ -50,6 +51,7 @@
         "delete_task": "Elige la tarea que quieres eliminar, o presiona Enter para cancelar: ",
         "confirm_deletion": "La tarea {task_id} será eliminada. Confirmar (s/n): ",
         "task_deleted": "Tarea eliminada con éxito.",
-        "choose_order": "Elige cómo ordenar (por defecto por Nº):\n1 -> Nº\n2 -> Nombre de tarea.\n3 -> Fecha límite.\n"
+        "choose_order": "Elige cómo ordenar (por defecto por Nº):\n1 -> Nº\n2 -> Nombre de tarea.\n3 -> Fecha límite.\n",
+        "complete_task": "Elige la tarea que quieres completar, o presiona Enter para cancelar: "
     }
 }

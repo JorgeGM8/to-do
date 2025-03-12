@@ -3,18 +3,23 @@ from json import load
 from tabulate import tabulate
 
 
-def task_list(): # This shows task list.
-	try:
-		order = int(input(lang_dict['choose_order']))
-		if order not in (2, 3):
+def task_list(table): # This shows task list.
+	if table == 'completed':
+		rows = cur.execute('SELECT * FROM completed').fetchall()
+		headers = [desc[0] for desc in cur.description]
+		print(tabulate(rows, headers=headers, tablefmt='grid'))
+	else:
+		try:
+			order = int(input(lang_dict['choose_order']))
+			if order not in (2, 3):
+				order = 1
+		except:
 			order = 1
-	except:
-		order = 1
-	
-	rows = cur.execute(f'SELECT * FROM tasks ORDER BY {order}').fetchall()
-	headers = [desc[0] for desc in cur.description]
+		
+		rows = cur.execute(f'SELECT * FROM tasks ORDER BY {order}').fetchall()
+		headers = [desc[0] for desc in cur.description]
 
-	print(tabulate(rows, headers=headers, tablefmt='grid'))
+		print(tabulate(rows, headers=headers, tablefmt='grid'))
 
 def task_mod(lang_dict_column): # This modifies the value of the selected column of a task.
 	if lang_dict_column == lang_dict["TASK_col"]:
@@ -51,6 +56,7 @@ cur = con.cursor()
 
 try:
 	cur.execute(f'CREATE TABLE tasks("{lang_dict["number_col"]}" INT, {lang_dict["TASK_col"]} VARCHAR(100) NOT NULL, "{lang_dict["DUE_DATE_col"]}" DATE, {lang_dict["DESCRIPTION_col"]} VARCHAR(300))')
+	cur.execute(f'CREATE TABLE completed("{lang_dict["number_col"]}" INT, {lang_dict["TASK_col"]} VARCHAR(100) NOT NULL, "{lang_dict["DUE_DATE_col"]}" DATE, {lang_dict["DESCRIPTION_col"]} VARCHAR(300))')
 	con.commit()
 except:
 	try:
@@ -64,6 +70,7 @@ except:
 			
 			if old_name != new_name:
 				cur.execute(f'ALTER TABLE tasks RENAME COLUMN "{old_name}" TO "{new_name}"')
+				cur.execute(f'ALTER TABLE completed RENAME COLUMN "{old_name}" TO "{new_name}"')
 				con.commit()
 	
 	except Exception as e:
@@ -88,7 +95,10 @@ while True:
 			print(lang_dict['task_created'])
 
 		case 2: # View task list.
-			task_list()
+			task_list('tasks')
+		
+		case 3: # View completed tasks.
+			task_list('completed')
 					
 		case 0: # Close program.
 			con.close()
@@ -100,7 +110,7 @@ while True:
 
 	match int(input(lang_dict['next_actions'])):
 		case 1: # Modify a task.
-			task_list()
+			task_list('tasks')
 			task_id = input(lang_dict['modify_task']).strip()
 			
 			if task_id == '':
@@ -130,7 +140,7 @@ while True:
 						continue
 
 		case 2: # Delete a task.
-			task_list()
+			task_list('tasks')
 			task_id = input(lang_dict['delete_task']).strip()
 
 			if task_id == '':
@@ -146,19 +156,36 @@ while True:
 				print(lang_dict['exists_false'])
 				continue
 			else: # Does exist.
-				con.commit()
-				cur.execute('BEGIN')
-				cur.execute(f'DELETE FROM tasks WHERE "{lang_dict["number_col"]}" = ?', (task_id,))
 				confirm = input(f'{lang_dict["confirm_deletion"]}').lower().strip()
 
 				if confirm == 'y':
+					cur.execute(f'DELETE FROM tasks WHERE "{lang_dict["number_col"]}" = ?', (task_id,))
 					con.commit()
 					print(lang_dict['task_deleted'])
 				else:
-					con.rollback()
+					continue
 		
-		case 3: # View task description.
-			pass
+		case 3: # Complete a task.
+			task_list('tasks')
+			task_id = input(lang_dict['complete_task']).strip()
+
+			if task_id == '':
+				continue
+			else:
+				try:
+					task_id = int(task_id)
+				except:
+					continue
+			
+			exists = cur.execute(f'SELECT EXISTS(SELECT * FROM tasks WHERE "{lang_dict["number_col"]}" = ?)', (task_id,)).fetchone()[0]
+			if exists == 0: # Does not exist.
+				print(lang_dict['exists_false'])
+				continue
+			else: # Does exist.
+				cur.execute(f'''INSERT INTO completed ("{lang_dict["number_col"]}", {lang_dict["TASK_col"]}, "{lang_dict["DUE_DATE_col"]}", {lang_dict["DESCRIPTION_col"]})
+				SELECT * FROM tasks WHERE "{lang_dict["number_col"]}" = ?''', (task_id,))
+				cur.execute(f'DELETE FROM tasks WHERE "{lang_dict["number_col"]}" = ?', (task_id,))
+				con.commit()
 
 		case 0: # Go to main menu.
 			continue
