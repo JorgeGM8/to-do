@@ -23,7 +23,11 @@ For example, with pip:
 
 ✅ Order by name or date.
 
+✅ Complete tasks.
+
 # Pending
+
+⚡ Priority levels.
 
 ⚡ Error handling.
 
