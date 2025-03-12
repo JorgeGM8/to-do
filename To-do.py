@@ -158,7 +158,7 @@ while True:
 			else: # Does exist.
 				confirm = input(f'{lang_dict["confirm_deletion"]}').lower().strip()
 
-				if confirm == 'y':
+				if confirm == 'y' or confirm == 's':
 					cur.execute(f'DELETE FROM tasks WHERE "{lang_dict["number_col"]}" = ?', (task_id,))
 					con.commit()
 					print(lang_dict['task_deleted'])
